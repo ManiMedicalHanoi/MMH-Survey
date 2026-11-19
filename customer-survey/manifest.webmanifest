@@ -1,0 +1,18 @@
+{
+  "name": "Customer Survey",
+  "short_name": "Customer Survey",
+  "description": "Kết quả khảo sát của MANI Medical Hanoi: thống kê từng câu hỏi, báo câu trả lời mới.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#121418",
+  "theme_color": "#121418",
+  "lang": "vi",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

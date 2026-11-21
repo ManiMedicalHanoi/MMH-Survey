@@ -128,7 +128,7 @@
   .tp-col .st { font-size:13px; color:var(--mut); margin:2px 0 8px; }
   .tp-col table.lb td.r span { display:inline-flex; width:26px; height:26px; border-radius:50%; align-items:center; justify-content:center; background:var(--soft); }
   .tp-col table.lb tr.p1 td.r span { background:var(--yel); color:#1a1a1a; }
-  .tp-col table.lb tr.p2 td.r span, .tp-col table.lb tr.p3 td.r span { background:var(--navy); color:#fff; }
+  .tp-col table.lb tr.p2 td.r span, .tp-col table.lb tr.p3 td.r span, .tp-col table.lb tr.p4 td.r span, .tp-col table.lb tr.p5 td.r span { background:var(--navy); color:#fff; }
   .gift { display:inline-block; font-size:11px; font-weight:700; color:var(--navy); background:#FFF6B3; border-radius:6px; padding:1px 6px; margin-top:3px; }
   .tp-note { color:var(--mut); font-size:13px; margin:12px 0 0; }
   @media (max-width:1100px) { .tp-grid { grid-template-columns:1fr; } .tp-grid .tp-col { display:none; } .tp-grid .tp-col.on { display:block; } }
@@ -362,7 +362,7 @@
     var rowsPart = function (p) {
       if (!p.top.length) return '<p class="sub">Chưa có ai làm bài.</p>';
       return '<table class="lb">' + p.top.map(function (t) {
-        var gift = t.rank <= 3 && t.right >= p.pass ? '<span class="gift">Túi cói MANI</span>' : '';
+        var gift = t.rank <= (p.prizeN || 3) && t.right >= p.pass ? '<span class="gift">Túi cói MANI</span>' : '';
         return '<tr class="p' + t.rank + '"><td class="r"><span>' + t.rank + '</span></td><td>' + esc(t.name) + '<small>' + esc(t.dealer) + '</small>' + gift + '</td>'
           + '<td class="s">' + fmt(t.score) + '<small>' + t.right + '/' + t.n + ' câu</small></td></tr>';
       }).join('') + '</table>';
@@ -387,7 +387,7 @@
       }).join('');
       Array.prototype.forEach.call($('tpTabs').querySelectorAll('button'), function (b) { b.onclick = function () { tab = b.getAttribute('data-k'); paint(r); }; });
       var p0 = r.parts[0] || {};
-      $('tpNote').textContent = 'Mỗi người tính lượt điểm cao nhất của từng phần. Top 3 mỗi phần (đúng từ ' + (p0.pass || 6) + '/' + (p0.n || 10) + ' câu) nhận túi cói MANI.';
+      $('tpNote').textContent = 'Mỗi người tính lượt điểm cao nhất của từng phần. Top ' + (p0.prizeN || 3) + ' mỗi phần (đúng từ ' + (p0.pass || 6) + '/' + (p0.n || 10) + ' câu) nhận túi cói MANI.';
       $('tpU').textContent = 'Cập nhật lúc ' + new Date().toLocaleTimeString('vi-VN');
     };
     var last = null;
